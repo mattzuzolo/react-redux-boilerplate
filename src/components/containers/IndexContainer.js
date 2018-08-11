@@ -3,10 +3,18 @@ import { connect } from 'react-redux';
 import ArtListContainer from "./ArtListContainer"
 
 class IndexContainer extends Component {
+    constructor(props){
+      super(props);
+
+      this.state = {
+        activeQuery: "",
+        submittedQuery: "",
+      }
+    }
 
   componentDidMount(){
     console.log("COMPONENT IS MOUNTED!!!")
-    this.props.updateTestString("this string was passed as a param after mounting!!!!>>>><<<<!!!In the mount");
+    this.props.updateTestString("This string is being updated in ComponentDidMount");
 
     fetch("http://localhost:4000/artwork")
     // fetch("https://agile-anchorage-40481.herokuapp.com/artwork")
@@ -14,9 +22,27 @@ class IndexContainer extends Component {
       .then(data => this.props.updateArtworkArray(data))
   }
 
+  onQueryChange = (event) => {
+    this.setState({ activeQuery: event.target.value })
+  }
+
+  handleFormSubmit = (event) => {
+    event.preventDefault();
+    let submittedQuery = this.state.activeQuery;
+    this.setState({submittedQuery});
+  }
+
   render(){
+    // console.log("Current query on render: ", this.state.activeQuery)
+    // console.log("Submitted query on render: ", this.state.submittedQuery)
     return(
-      <div>index_container: {this.props.updateTestString}</div>
+      <div className="container div--index-container">
+        <form onSubmit={this.handleFormSubmit}>
+          <input placeholder="search for art here" value={this.state.activeQuery} onChange={this.onQueryChange} ></input>
+          <button>Click me for art</button>
+          <ArtListContainer />
+        </form>
+      </div>
     );
   }
 
