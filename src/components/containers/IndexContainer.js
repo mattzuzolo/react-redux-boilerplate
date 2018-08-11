@@ -6,10 +6,10 @@ class IndexContainer extends Component {
 
   componentDidMount(){
     console.log("COMPONENT IS MOUNTED!!!")
-    this.props.updateTestString("this string was passed as a param after mounting!!!!>>>><<<<!!!");
+    this.props.updateTestString("this string was passed as a param after mounting!!!!>>>><<<<!!!In the mount");
 
-    // fetch("http://localhost:4000/artwork")
-    fetch("https://agile-anchorage-40481.herokuapp.com/artwork")
+    fetch("http://localhost:4000/artwork")
+    // fetch("https://agile-anchorage-40481.herokuapp.com/artwork")
       .then(response => response.json())
       .then(data => this.props.updateArtworkArray(data))
   }
