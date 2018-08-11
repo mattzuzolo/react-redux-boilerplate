@@ -13,13 +13,11 @@ class IndexContainer extends Component {
     }
 
   componentDidMount(){
-    // console.log("COMPONENT IS MOUNTED!!!")
-    this.props.updateTestString("This string is being updated in IndexContainer's ComponentDidMount");
-
-    fetch("http://localhost:4000/artwork")
     // fetch("https://agile-anchorage-40481.herokuapp.com/artwork")
+    fetch("http://localhost:4000/artwork")
       .then(response => response.json())
       .then(data => this.props.updateArtworkArray(data))
+      // .then(() => this.props.updateTestString("This string is being updated in IndexContainer's ComponentDidMount"))
   }
 
   onQueryChange = (event) => {
@@ -33,7 +31,6 @@ class IndexContainer extends Component {
   }
 
   render(){
-    console.log("Current query on render: ", this.state.activeQuery)
     // console.log("Submitted query on render: ", this.state.submittedQuery)
     return(
       <div className="container div--index-container">
@@ -56,15 +53,13 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-  // console.log("mapDispatchToProps dispatch: ", dispatch )
   return {
-    updateArtworkArray: (artworkArray => {
-      console.log("Artwork array at MDP: ", artworkArray);
-      dispatch({type: "UPDATE_ARTWORK_ARRAY", payload: {artworkArray}})
-    }),
-    updateTestString: (newString => {
-      dispatch({type: "CHANGE_MESSAGE", payload: newString})
-    })
+    updateArtworkArray: (dataArray) => {
+      dispatch({type: "UPDATE_ARTWORK_ARRAY", payload: dataArray})
+    },
+    updateTestString: (testString) => {
+      dispatch({type: "UPDATE_ARTWORK_ARRAY", payload: testString})
+    },
   }
 }
 

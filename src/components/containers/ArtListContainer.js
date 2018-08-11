@@ -39,7 +39,6 @@ class ArtListContainer extends Component {
   }
 
   render(){
-    console.log("ArtListContainer redux artworkArray props: ", this.props.artworkArray);
     return(
       <div className="container div--art-list-container">
         {this.state.tempArray.map(individualCard => (
@@ -50,7 +49,7 @@ class ArtListContainer extends Component {
             title={individualCard.title}
             artist={individualCard.artist}
             imageUrl={individualCard.imageUrl}
-            />
+          />
         ))}
       </div>
     )
@@ -63,12 +62,11 @@ class ArtListContainer extends Component {
 function mapStateToProps(state){
   return {
     artworkArray: state.artworkArray,
-    testString: state.testString,
+    // testString: state.testString,
   }
 }
 
 function mapDispatchToProps(dispatch){
-  // console.log("mapDispatchToProps dispatch: ", dispatch )
   return {
     updateArtworkArray: (artworkArray => {
       dispatch({type: "UPDATE_ARTWORK_ARRAY", payload: artworkArray})

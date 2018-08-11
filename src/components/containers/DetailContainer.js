@@ -19,11 +19,10 @@ class DetailContainer extends Component {
   }
 
   render(){
-    console.log("Render state in detail container", this.state)
     return(
       <div>
         <div id="annotation-zone">
-          <img src={this.state.tempArt.imageUrl}></img>
+          <img src={this.state.tempArt.imageUrl} alt=""></img>
         </div>
         <h1>{this.state.tempArt.title}</h1>
         <h3>{this.state.tempArt.artist}</h3>

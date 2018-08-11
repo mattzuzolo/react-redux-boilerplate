@@ -5,7 +5,6 @@ import './App.css';
 
 import NavBar from "./components/NavBar"
 import IndexContainer from "./components/containers/IndexContainer";
-import AnnotationContainer from "./components/containers/AnnotationContainer"
 import DetailContainer from "./components/containers/DetailContainer"
 
 // import { connect } from 'react-redux'
@@ -21,10 +20,8 @@ class App extends Component {
   render() {
     return (
       <div className="container div--app App">
-        Hello world
         <Route path="/" component={NavBar} />
           <Switch>
-            <Route path="/annotations" component={AnnotationContainer} />
             <Route path="/artwork" component={IndexContainer} />
             <Route path="/individualArtwork" component={DetailContainer} />
           </Switch>
@@ -34,18 +31,3 @@ class App extends Component {
 }
 
 export default withRouter(App);
-
-
-// const mapStateToProps = (state) => {
-//   return {
-//     exampleMessage: state.exampleState.exampleMessage
-//   }
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     changeExampleMessage: () => { dispatch(changeExampleMessage()) }
-//   }
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
