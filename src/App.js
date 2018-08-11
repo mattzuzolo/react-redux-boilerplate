@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import logo2 from './logo2.svg';
+import { Route, Switch, withRouter } from 'react-router-dom';
+
 import './App.css';
 
+import NavBar from "./components/NavBar"
 import IndexContainer from "./components/containers/IndexContainer";
+import AnnotationContainer from "./components/containers/AnnotationContainer"
 
 // import { connect } from 'react-redux'
 // import { changeExampleMessage } from './actions'
@@ -17,27 +19,20 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <div>
-            <img src={logo} className="App-logo" alt="logo" />
-            <img src={logo2} className="App-logo-2" alt="logo" />
-          </div>
-          <h1 className="App-title">Dankness (aka React x Redux)</h1>
-          <p>Welcome to the npm package that configures your React-Redux app for you. Check out the actions, reducers and store directories for more information.</p>
-          <p className="App-intro">
-            <code>As always, to get started, edit src/App.js and save to reload.</code>
-          </p>
-        </header>
-        <IndexContainer />
-        {/* <h3> { this.props.exampleMessage }</h3>
-        <button onClick={this.handleClick}> Click me </button> */}
+      <div className="container div--app App">
+        Hello world
+        <Route path="/" component={NavBar} />
+          <Switch>
+            <Route path="/annotations" component={AnnotationContainer} />
+            <Route path="/artwork" component={IndexContainer} />
+          </Switch>
       </div>
     );
   }
 }
 
-export default App
+export default withRouter(App);
+
 
 // const mapStateToProps = (state) => {
 //   return {
