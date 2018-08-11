@@ -6,6 +6,7 @@ import './App.css';
 import NavBar from "./components/NavBar"
 import IndexContainer from "./components/containers/IndexContainer";
 import AnnotationContainer from "./components/containers/AnnotationContainer"
+import DetailContainer from "./components/containers/DetailContainer"
 
 // import { connect } from 'react-redux'
 // import { changeExampleMessage } from './actions'
@@ -25,6 +26,7 @@ class App extends Component {
           <Switch>
             <Route path="/annotations" component={AnnotationContainer} />
             <Route path="/artwork" component={IndexContainer} />
+            <Route path="/individualArtwork" component={DetailContainer} />
           </Switch>
       </div>
     );
