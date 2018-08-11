@@ -19,11 +19,7 @@ export default function(state = defaultState, action) {
 
   switch(action.type){
     case "UPDATE_ARTWORK_ARRAY":
-      // return {...state, artworkArray: action.payload}
-      console.log("payload before return", action.payload.artwork)
-      console.log("state before return", state.artworkArray[0])
       return {...state, artworkArray: [...state.artworkArray, ...action.payload.artwork]}
-      // return Object.assign
 
     case "CHANGE_MESSAGE":
       return {testString: action.payload}
