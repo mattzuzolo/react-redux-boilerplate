@@ -41,7 +41,7 @@ class ArtListContainer extends Component {
   render(){
     return(
       <div className="container div--art-list-container">
-        {this.state.tempArray.map(individualCard => (
+        {this.props.artworkArray.map(individualCard => (
           <ArtCard
             className="artList"
             key={individualCard.apiId}
