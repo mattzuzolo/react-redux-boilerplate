@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import logo2 from './logo2.svg';
 import './App.css';
 
+import IndexContainer from "./components/containers/IndexContainer";
+
 // import { connect } from 'react-redux'
 // import { changeExampleMessage } from './actions'
 
@@ -27,6 +29,7 @@ class App extends Component {
             <code>As always, to get started, edit src/App.js and save to reload.</code>
           </p>
         </header>
+        <IndexContainer />
         {/* <h3> { this.props.exampleMessage }</h3>
         <button onClick={this.handleClick}> Click me </button> */}
       </div>
