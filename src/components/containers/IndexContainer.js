@@ -31,13 +31,13 @@ class IndexContainer extends Component {
   }
 
   render(){
-    // console.log("Submitted query on render: ", this.state.submittedQuery)
+    // console.log("Index props at render", this.props.routerProps)
     return(
       <div className="container div--index-container">
         <form onSubmit={this.handleFormSubmit}>
           <input placeholder="search for art here" value={this.state.activeQuery} onChange={this.onQueryChange} ></input>
           <button>Click me for art</button>
-          <ArtListContainer />
+          <ArtListContainer routerProps={this.props.routerProps} />
         </form>
       </div>
     );

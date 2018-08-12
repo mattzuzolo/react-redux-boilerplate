@@ -6,10 +6,13 @@ class ArtListContainer extends Component {
 
   onClickArtwork = (event, selectedArtwork) => {
     console.log("This is what you selected: ", selectedArtwork);
+    console.log("router props in onClic", this.props.routerProps)
+    this.props.routerProps.history.push(`/artwork/${this.props.selectedArtwork.apiId}`)
     this.props.selectArtwork(selectedArtwork);
   }
 
   render(){
+    console.log("Router props in artlist", this.props.routerProps)
     return(
       <div className="container div--art-list-container">
         {this.props.artworkArray.map(individualCard => (
