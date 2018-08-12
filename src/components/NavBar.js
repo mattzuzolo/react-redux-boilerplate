@@ -6,7 +6,6 @@ class NavBar extends Component {
     return(
       <div className="navbar">
         <Link to="/artwork">Artwork     </Link>
-        <Link to="/individualArtwork">individualArtwork     </Link>
       </div>
     )
   }

@@ -24,13 +24,18 @@ class App extends Component {
       <div className="container div--app App">
         <Route path="/" component={NavBar} />
           <Switch>
-            <Route path ={`/artwork/${this.props.selectedArtwork.apiId}`} component={DetailContainer} />
 
-            <Route path="/artwork" render={(routerProps) => <IndexContainer routerProps={routerProps} />}/>
+            <Route path ={`/artwork/:id`} render={(routerProps) => {
+                let id = routerProps.match.params.id;
+                let foundArtwork = this.props.artworkArray.find((art) => art.apiId == id);
+                return <DetailContainer artwork={foundArtwork} />
+              }} />
 
 
-            // <Route path="/artwork" component={IndexContainer} />
-            <Route path="/individualArtwork" component={DetailContainer} />
+            <Route path="/artwork" render={(routerProps) => <IndexContainer
+                routerProps={routerProps} />}/>
+
+
           </Switch>
       </div>
     );
@@ -45,3 +50,11 @@ function mapStateToProps(state){
 }
 
 export default withRouter(connect(mapStateToProps)(App));
+
+
+            // <Route path="/artwork" component={IndexContainer} />
+            // <Route path ={`/artwork/${this.props.selectedArtwork.apiId}`} component={DetailContainer} />
+
+            // <Route path ={`/artwork/:id`} component={DetailContainer} />
+
+            // <DetailContainer routerProps={routerProps} />} />
