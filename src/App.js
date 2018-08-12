@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 
 import './App.css';
 
@@ -23,6 +25,11 @@ class App extends Component {
         <Route path="/" component={NavBar} />
           <Switch>
             <Route path="/artwork" component={IndexContainer} />
+
+
+
+
+
             <Route path="/individualArtwork" component={DetailContainer} />
           </Switch>
       </div>
@@ -30,4 +37,11 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+function mapStateToProps(state){
+  return {
+    artworkArray: state.artworkArray,
+    selectedArtwork: state.selectArtwork,
+  }
+}
+
+export default connect(mapStateToProps)(App);

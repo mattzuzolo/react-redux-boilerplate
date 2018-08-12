@@ -5,8 +5,8 @@ import ArtCard from "../ArtCard"
 class ArtListContainer extends Component {
 
   onClickArtwork = (event, selectedArtwork) => {
-    console.log("You clicked a work of art!!!");
-    console.log("This is what you selected: ", selectedArtwork);
+    // console.log("You clicked a work of art!!!");
+    // console.log("This is what you selected: ", selectedArtwork);
     this.props.selectArtwork(selectedArtwork)
   }
 
