@@ -24,6 +24,7 @@ class App extends Component {
       <div className="container div--app App">
         <Route path="/" component={NavBar} />
           <Switch>
+            <Route path ={`/artwork/${this.props.selectedArtwork.apiId}`} component={DetailContainer} artwork={this.props.selectedArtwork} />
             <Route path="/artwork" component={IndexContainer} />
             <Route path="/individualArtwork" component={DetailContainer} />
           </Switch>
