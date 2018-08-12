@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 
 class DetailContainer extends Component {
   constructor(props){
@@ -19,18 +21,25 @@ class DetailContainer extends Component {
   }
 
   render(){
+    console.log("Detail container props", this.props.artwork)
     return(
       <div>
         <div id="annotation-zone">
-          <img src={this.state.tempArt.imageUrl} alt=""></img>
+          <img src={this.props.selectedArtwork.imageUrl} alt=""></img>
         </div>
-        <h1>{this.state.tempArt.title}</h1>
-        <h3>{this.state.tempArt.artist}</h3>
-        <p>{this.state.tempArt.medium} <br /><a href={this.state.tempArt.url}>Read more here</a></p>
+        <h1>{this.props.selectedArtwork.title}</h1>
+        <h3>{this.props.selectedArtwork.artist}</h3>
+        <p>{this.props.selectedArtwork.medium} <br /><a href={this.props.selectedArtwork.url}>Read more here</a></p>
       </div>
     )
   }
 
 }
 
-export default DetailContainer
+function mapStateToProps(state){
+  return {
+    selectedArtwork: state.selectedArtwork,
+  }
+}
+
+export default connect(mapStateToProps)(DetailContainer);

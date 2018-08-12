@@ -27,7 +27,7 @@ class App extends Component {
 
             <Route path ={`/artwork/:id`} render={(routerProps) => {
                 let id = routerProps.match.params.id;
-                let foundArtwork = this.props.artworkArray.find((art) => art.apiId == id);
+                let foundArtwork = this.props.artworkArray.find((art) => art.apiId === parseInt(id, 10));
                 return <DetailContainer artwork={foundArtwork} />
               }} />
 
