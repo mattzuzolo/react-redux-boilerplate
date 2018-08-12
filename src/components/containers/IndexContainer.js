@@ -31,6 +31,7 @@ class IndexContainer extends Component {
   }
 
   render(){
+        <h1>ArtListContainerInstance</h1>
     // console.log("Index props at render", this.props.routerProps)
     return(
       <div className="container div--index-container">
