@@ -8,6 +8,7 @@ import './App.css';
 import NavBar from "./components/NavBar"
 import IndexContainer from "./components/containers/IndexContainer";
 import DetailContainer from "./components/containers/DetailContainer"
+import ArtListContainer from "./components/containers/ArtListContainer"
 
 // import { connect } from 'react-redux'
 // import { changeExampleMessage } from './actions'
