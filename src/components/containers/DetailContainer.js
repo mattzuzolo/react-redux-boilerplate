@@ -3,22 +3,6 @@ import { connect } from 'react-redux';
 
 
 class DetailContainer extends Component {
-  constructor(props){
-    super(props);
-
-    this.state = {
-      tempArt: {
-        title: "Guernica",
-        artist: "Pablo Picasso",
-        medium: "Oil on canvas",
-        century: "20th Cenutry",
-        culture: "Spanish",
-        url: "https://en.wikipedia.org/wiki/Guernica_(Picasso)",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/en/7/74/PicassoGuernica.jpg",
-        apiId: 568,
-      }
-    }
-  }
 
   render(){
     console.log("Detail container props", this.props.artwork)

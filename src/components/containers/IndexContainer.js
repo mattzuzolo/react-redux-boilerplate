@@ -31,7 +31,6 @@ class IndexContainer extends Component {
   }
 
   render(){
-    // console.log("Index props at render", this.props.routerProps)
     return(
       <div className="container div--index-container">
         <form onSubmit={this.handleFormSubmit}>
