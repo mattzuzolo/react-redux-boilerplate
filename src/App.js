@@ -26,7 +26,11 @@ class App extends Component {
         <Route path="/" component={NavBar} />
           <Switch>
             <Route path={`/artwork/${this.props.selectedArtwork.apiId}`} component={DetailContainer} artwork={this.props.selectedArtwork}/>
-            <Route path="/artwork" component={IndexContainer} />
+
+            <Route path="/artwork" render={(routerProps) => <IndexContainer {...routerProps} />}/>
+
+
+            // <Route path="/artwork" component={IndexContainer} />
             <Route path="/individualArtwork" component={DetailContainer} />
           </Switch>
       </div>
@@ -42,3 +46,6 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps)(App);
+
+
+// <Route exact path="/" render={() => <Home/>}/>
