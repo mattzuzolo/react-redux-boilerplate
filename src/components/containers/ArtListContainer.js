@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { routerProps } from 'react-router'
 import ArtCard from "../ArtCard"
 
 class ArtListContainer extends Component {
 
-  onClickArtwork = (event, selectedArtwork) => {
+
+  onClickArtwork = (event, selectedArtwork, props) => {
     // console.log("You clicked a work of art!!!");
     // console.log("This is what you selected: ", selectedArtwork);
-    this.props.selectArtwork(selectedArtwork)
+    this.props.selectArtwork(selectedArtwork);
+    // routerProps.history.push(`/artwork/${selectedArtwork.apiId}`)
   }
+
 
   render(){
     return(
