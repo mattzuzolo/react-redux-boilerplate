@@ -31,10 +31,8 @@ class App extends Component {
                 return <DetailContainer/>
               }} />
 
-
             <Route path="/artwork" render={(routerProps) => <IndexContainer
                 routerProps={routerProps} />}/>
-
 
           </Switch>
       </div>

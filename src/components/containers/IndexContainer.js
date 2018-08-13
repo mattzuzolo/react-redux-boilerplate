@@ -13,8 +13,8 @@ class IndexContainer extends Component {
     }
 
   componentDidMount(){
-    fetch("https://agile-anchorage-40481.herokuapp.com/artwork")
-    // fetch("http://localhost:4000/artwork")
+    // fetch("https://agile-anchorage-40481.herokuapp.com/artwork")
+    fetch("http://localhost:4000/artwork")
       .then(response => response.json())
       .then(data => this.props.updateArtworkArray(data))
       // .then(() => this.props.updateTestString("This string is being updated in IndexContainer's ComponentDidMount"))
