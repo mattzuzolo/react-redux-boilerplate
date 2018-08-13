@@ -50,13 +50,13 @@ class DetailContainer extends Component {
     // console.log("headline value: ", this.state.headline)
     // console.log("sourceLink value: ", this.state.sourceLink)
     // console.log("content value: ", this.state.content)
+    // console.log("Is marker being displayed?", this.state.displayingMarker);
     console.log(`X/Y coords: ${this.state.xCoord} / ${this.state.yCoord}`);
-    console.log("Is marker being displayed?", this.state.displayingMarker);
 
 
     let annotationMarkerStyle = {
-      top: this.state.xCoord,
-      left: this.state.yCoord,
+      top: this.state.yCoord,
+      left: this.state.xCoord,
     }
 
 
