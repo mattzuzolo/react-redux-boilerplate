@@ -1,7 +1,6 @@
 #annotation-marker {
-  position: fixed; /*Maybe it should be absolute?  */
+  position: fixed;
   z-index:2;
-
   border: 5px solid #39ff14;
    border-radius: 100px;
    height:100px;

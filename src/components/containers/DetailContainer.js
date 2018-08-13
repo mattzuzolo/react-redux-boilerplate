@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+const annotationUrl = "https://agile-anchorage-40481.herokuapp.com/annotations";
+
+
 
 class DetailContainer extends Component {
   constructor(props){
@@ -18,9 +21,29 @@ class DetailContainer extends Component {
   }
 
 
-  onAnnotationSubmit = (event, formData) => {
+  onAnnotationSubmit = (event) => {
     event.preventDefault();
-    console.log("You submitted the form")
+    console.log("You submitted an annotation!")
+
+    let submissionBody = {
+      headline: this.state.headline,
+      source: this.state.sourceLink,
+      content: this.state.content,
+    }
+
+    let postConfig = {
+       method: "POST",
+       headers: {
+         "Content-type": "application/json"
+       },
+       body: JSON.stringify(submissionBody)
+    }
+
+    fetch(annotationUrl, postConfig)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.log(error));
+
   }
 
   onInputChange = (event) => {
@@ -32,7 +55,8 @@ class DetailContainer extends Component {
 
   onArtworkClick = (event) => {
     // console.log("You clicked some artwork", event)
-    let currentTargetRect = event.currentTarget.getBoundingClientRect();
+    // getBoundingClientRect() method returns the size of an element and its position relative to the viewport.
+    let currentTargetRect = event.currentTarget.getBoundingClientRect(); //figure how to use this later. Useful for reconstructing event?
     let xCoord = event.pageX - currentTargetRect.left;
     let yCoord = event.pageY - currentTargetRect.top;
 
@@ -43,7 +67,7 @@ class DetailContainer extends Component {
     })
 
   }
-  // getBoundingClientRect() method returns the size of an element and its position relative to the viewport.
+
 
 
   render(){
@@ -51,12 +75,14 @@ class DetailContainer extends Component {
     // console.log("sourceLink value: ", this.state.sourceLink)
     // console.log("content value: ", this.state.content)
     // console.log("Is marker being displayed?", this.state.displayingMarker);
-    console.log(`X/Y coords: ${this.state.xCoord} / ${this.state.yCoord}`);
+    // console.log(`X/Y coords: ${this.state.xCoord} / ${this.state.yCoord}`);
+    console.log("state at render", this.state)
 
 
     let annotationMarkerStyle = {
       top: this.state.yCoord,
       left: this.state.xCoord,
+      position: "fixed",
     }
 
 
@@ -74,7 +100,7 @@ class DetailContainer extends Component {
         <h3>{this.props.selectedArtwork.artist}</h3>
         <p>{this.props.selectedArtwork.medium} <br /><a href={this.props.selectedArtwork.url}>Read more here</a></p>
 
-        <form onSubmit={(event) => this.onAnnotationSubmit(event)}>
+        <form onSubmit={this.onAnnotationSubmit}>
           <label>Headline:</label>
           <input placeholder="headline here" name="headline" value={this.state.headline} onChange={this.onInputChange} ></input>
 
