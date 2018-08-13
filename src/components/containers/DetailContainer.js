@@ -30,7 +30,7 @@ class DetailContainer extends Component {
   }
 
   onArtworkClick = (event) => {
-    console.log("You clicked some artwork", event)
+    // console.log("You clicked some artwork", event)
     let currentTargetRect = event.currentTarget.getBoundingClientRect();
     let xCoord = event.pageX - currentTargetRect.left;
     let yCoord = event.pageY - currentTargetRect.top;
