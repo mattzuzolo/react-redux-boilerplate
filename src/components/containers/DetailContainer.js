@@ -12,6 +12,7 @@ class DetailContainer extends Component {
         content: "",
         xCoord: 0,
         yCoord: 0,
+        displayingMarker: false,
     }
 
   }
@@ -36,8 +37,9 @@ class DetailContainer extends Component {
     let yCoord = event.pageY - currentTargetRect.top;
 
     this.setState({
-      xCoord,
-      yCoord,
+      xCoord: xCoord,
+      yCoord: yCoord,
+      displayingMarker: true,
     })
 
   }
@@ -48,11 +50,18 @@ class DetailContainer extends Component {
     // console.log("sourceLink value: ", this.state.sourceLink)
     // console.log("content value: ", this.state.content)
     console.log(`X/Y coords: ${this.state.xCoord} / ${this.state.yCoord}`);
-
+    console.log("Is marker being displayed?", this.state.displayingMarker);
     return(
       <div>
         <div id="annotation-zone"  >
-          <img src={this.props.selectedArtwork.imageUrl} alt="" onClick={this.onArtworkClick} ></img>
+
+            { this.state.displayingMarker
+                      ? <div id="annotation-marker"></div>
+                      : null
+                  }
+
+
+          <img src={this.props.selectedArtwork.imageUrl} alt="" onClick={this.onArtworkClick}></img>
         </div>
 
         <h1>{this.props.selectedArtwork.title}</h1>
@@ -84,3 +93,7 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps)(DetailContainer);
+
+
+// {this.state.displayingMarker ? }
+// <div id="annotation-marker"></div>
