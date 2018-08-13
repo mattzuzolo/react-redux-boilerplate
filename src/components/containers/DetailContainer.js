@@ -7,9 +7,11 @@ class DetailContainer extends Component {
     super(props);
 
     this.state = {
-        headline: '',
+        headline: "",
         sourceLink: "",
         content: "",
+        xCoord: 0,
+        yCoord: 0,
     }
 
   }
@@ -33,8 +35,11 @@ class DetailContainer extends Component {
     let xCoord = event.pageX - currentTargetRect.left;
     let yCoord = event.pageY - currentTargetRect.top;
 
-    console.log("xCoord", xCoord);
-    console.log("yCoord", yCoord);
+    this.setState({
+      xCoord,
+      yCoord,
+    })
+
   }
   // getBoundingClientRect() method returns the size of an element and its position relative to the viewport.
 
@@ -42,6 +47,8 @@ class DetailContainer extends Component {
     // console.log("headline value: ", this.state.headline)
     // console.log("sourceLink value: ", this.state.sourceLink)
     // console.log("content value: ", this.state.content)
+    console.log(`X/Y coords: ${this.state.xCoord} / ${this.state.yCoord}`);
+
     return(
       <div>
         <div id="annotation-zone"  >
