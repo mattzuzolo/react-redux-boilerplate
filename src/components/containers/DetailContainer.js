@@ -24,12 +24,16 @@ class DetailContainer extends Component {
   onAnnotationSubmit = (event) => {
     event.preventDefault();
     console.log("You submitted an annotation!")
+    console.log("Currently selected artwork", this.props.selectedArtwork)
 
     let submissionBody = {
+      artwork: [this.props.selectedArtwork],
       headline: this.state.headline,
       source: this.state.sourceLink,
       content: this.state.content,
     }
+
+    console.log("Submission body", submissionBody)
 
     let postConfig = {
        method: "POST",
@@ -39,10 +43,10 @@ class DetailContainer extends Component {
        body: JSON.stringify(submissionBody)
     }
 
-    fetch(annotationUrl, postConfig)
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.log(error));
+    // fetch(annotationUrl, postConfig)
+    //   .then(response => response.json())
+    //   .then(data => console.log(data))
+    //   .catch(error => console.log(error));
 
   }
 
