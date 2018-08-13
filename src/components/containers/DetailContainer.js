@@ -11,6 +11,11 @@ class DetailContainer extends Component {
         sourceLink: "",
         content: "",
     }
+
+  }
+
+  componentDidMount(){
+    let annotationZone = this.refs.annotationZone;
   }
 
   onAnnotationSubmit = (event, formData) => {
@@ -23,6 +28,11 @@ class DetailContainer extends Component {
     let fieldName = event.target.name;
     let currentValue = event.target.value;
     this.setState({ [fieldName]: currentValue })
+  }
+
+  onArtworkClick = (event) => {
+    event.persist();
+
   }
 
   render(){
