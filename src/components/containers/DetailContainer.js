@@ -45,22 +45,28 @@ class DetailContainer extends Component {
   }
   // getBoundingClientRect() method returns the size of an element and its position relative to the viewport.
 
+
   render(){
     // console.log("headline value: ", this.state.headline)
     // console.log("sourceLink value: ", this.state.sourceLink)
     // console.log("content value: ", this.state.content)
     console.log(`X/Y coords: ${this.state.xCoord} / ${this.state.yCoord}`);
     console.log("Is marker being displayed?", this.state.displayingMarker);
+
+
+    let annotationMarkerStyle = {
+      top: this.state.xCoord,
+      left: this.state.yCoord,
+    }
+
+
     return(
       <div>
         <div id="annotation-zone"  >
-
             { this.state.displayingMarker
-                      ? <div id="annotation-marker"></div>
+                      ? <div id="annotation-marker" style={annotationMarkerStyle} ></div>
                       : null
-                  }
-
-
+            }
           <img src={this.props.selectedArtwork.imageUrl} alt="" onClick={this.onArtworkClick}></img>
         </div>
 
