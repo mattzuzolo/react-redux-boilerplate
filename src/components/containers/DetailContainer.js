@@ -14,9 +14,6 @@ class DetailContainer extends Component {
 
   }
 
-  componentDidMount(){
-    let annotationZone = this.refs.annotationZone;
-  }
 
   onAnnotationSubmit = (event, formData) => {
     event.preventDefault();
@@ -31,19 +28,26 @@ class DetailContainer extends Component {
   }
 
   onArtworkClick = (event) => {
-    event.persist();
+    console.log("You clicked some artwork", event)
+    let currentTargetRect = event.currentTarget.getBoundingClientRect();
+    let xCoord = event.pageX - currentTargetRect.left;
+    let yCoord = event.pageY - currentTargetRect.top;
 
+    console.log("xCoord", xCoord);
+    console.log("yCoord", yCoord);
   }
+  // getBoundingClientRect() method returns the size of an element and its position relative to the viewport.
 
   render(){
-    console.log("headline value: ", this.state.headline)
-    console.log("sourceLink value: ", this.state.sourceLink)
-    console.log("content value: ", this.state.content)
+    // console.log("headline value: ", this.state.headline)
+    // console.log("sourceLink value: ", this.state.sourceLink)
+    // console.log("content value: ", this.state.content)
     return(
       <div>
-        <div id="annotation-zone">
-          <img src={this.props.selectedArtwork.imageUrl} alt=""></img>
+        <div id="annotation-zone"  >
+          <img src={this.props.selectedArtwork.imageUrl} alt="" onClick={this.onArtworkClick} ></img>
         </div>
+
         <h1>{this.props.selectedArtwork.title}</h1>
         <h3>{this.props.selectedArtwork.artist}</h3>
         <p>{this.props.selectedArtwork.medium} <br /><a href={this.props.selectedArtwork.url}>Read more here</a></p>
